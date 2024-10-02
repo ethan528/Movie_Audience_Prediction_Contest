@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/77be36b7e2.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <link rel="stylesheet" href="reset.css" /> -->
+    <!-- <link rel="stylesheet" href="normalize.css" /> -->
+  </head>
+  <body>
+    <!-- <i class="fas fa-plus"></i>
+    <i class="fas fa-trash"></i> -->
+    <div class="card">
+      <div class="card__title">Todo App</div>
+      <div class="card__content">
+        <div class="input-field">
+          <input
+            id="input-box"
+            type="text"
+            placeholder="Task를 입력해주세요."
+          />
+          <button id="add-btn">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <ul class="todo-list" id="todo-list"></ul>
+      </div>
+      <div class="card__footer">
+        <span><span id="todo-count"></span> tasks</span>
+        <button id="clear-all">전체 삭제</button>
+      </div>
+    </div>
+  </body>
+</html>
