@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "33530690725",
+    "project_id": "fcm-test-9609c",
+    "storage_bucket": "fcm-test-9609c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33530690725:android:e7cc89517cbe613a49e14c",
+        "android_client_info": {
+          "package_name": "com.example.fcm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ56f8Z7CVBrhoLwXaTJEirH13eoeFXiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
