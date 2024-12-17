@@ -28,6 +28,7 @@ class NotificationService {
 
     // Setup message handlers
     await _setupMessageHandlers();
+    await setupFlutterNotifications();
 
     // Get FCM token
     final token = await _messaging.getToken();
@@ -81,14 +82,11 @@ class NotificationService {
     );
 
     // flutter notification setup
-    await _localNotifications.initialize(initializationSettings,
-        onDidReceiveNotificationResponse: (details) {
-      if (details.payload == 'chat') {
-        navigatorKey.currentState?.push(MaterialPageRoute(
-          builder: (context) => const ChatScreen(),
-        ));
-      }
-    });
+    await _localNotifications.initialize(
+      initializationSettings,
+      onDidReceiveNotificationResponse: (NotificationResponse details) =>
+          _handleBackgroundMessage(details.payload!),
+    );
 
     _isFlutterLocalNotificationsInitialized = true;
   }
@@ -118,7 +116,7 @@ class NotificationService {
             presentSound: true,
           ),
         ),
-        payload: message.data.toString(),
+        payload: message.data['type'].toString(),
       );
     }
   }
@@ -130,17 +128,19 @@ class NotificationService {
     });
 
     // background message
-    FirebaseMessaging.onMessageOpenedApp.listen(_handleBackgroundMessage);
+    FirebaseMessaging.onMessageOpenedApp.listen((message) {
+      _handleBackgroundMessage(message.data['type']);
+    });
 
     // opened app
     final initialMessage = await _messaging.getInitialMessage();
     if (initialMessage != null) {
-      _handleBackgroundMessage(initialMessage);
+      _handleBackgroundMessage(initialMessage.data['type']);
     }
   }
 
-  void _handleBackgroundMessage(RemoteMessage message) {
-    if (message.data['type'] == 'chat') {
+  void _handleBackgroundMessage(String message) {
+    if (message == 'chat') {
       // open chat screen
       navigatorKey.currentState?.push(MaterialPageRoute(
         builder: (context) => const ChatScreen(),
