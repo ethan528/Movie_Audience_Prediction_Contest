@@ -70,11 +70,11 @@ class NotificationService {
 
     await _localNotifications
         .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
+        AndroidFlutterLocalNotificationsPlugin>()
         ?.createNotificationChannel(channel);
 
     const initializationSettingsAndroid =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
+    AndroidInitializationSettings('@mipmap/ic_launcher');
 
     // ios setup
     const initializationSettingsDarwin = DarwinInitializationSettings();
@@ -108,7 +108,7 @@ class NotificationService {
             'high_importance_channel',
             'High Importance Notifications',
             channelDescription:
-                'This channel is used for important notifications.',
+            'This channel is used for important notifications.',
             importance: Importance.high,
             priority: Priority.high,
             icon: '@mipmap/ic_launcher',
@@ -128,6 +128,7 @@ class NotificationService {
     // foreground message
     FirebaseMessaging.onMessage.listen((message) {
       showNotification(message);
+      _showDialogWithNotification(message);
     });
 
     // background message
@@ -158,7 +159,7 @@ class NotificationService {
 
   Future<void> sendNotification(String title, String body) async {
     String accessToken =
-        'ya29.c.c0ASRK0GYGGk3313PYRxJNGN-NHK6EbxsYfoewEz9jdPm6AebDOL7Kvhy_1aVeEkU09E4qRnid72_To4ROdBcXRqgXY0FMJbVQur3a4uQYpK-Cf3LHLAoNqgPTAAco3NdVsRuPw3N8hILCZqBLUrQA81iDnuyjJ5PgtYO4vhOUapCkX4U9rE4snntD_xOLNQAaeFroNmYn-QCPYyAdWSHBU-LoFoEB_T8NbuNJSHIkgsNN3h9kQsgAlv4APeejiWas3Z-67YrAmW1ck7Ng0ofTyphYmEXvTncjVSQl5C85MlDMQSoqBJCl-PYulaWVbfE6uHWe04r3Fw5fLtoSgAcfO1rb3oyDbwVxO0n1LD8aL99Wjrw3SSU9AgE383CufXF7pi34xb-VmXehiWyIgjUXJtk-IMjhM2itSiRu53jUuQ_txV4zQFR3Iw43Bt_bIZsz_QUspRqdtZFzc57m6UvS0uqQuZW91pW12Indj2iFVIf493hqywyJ6r5cuQZzMm_Zyf8W5OzMVo_Z4BcZ-xgjy52MY2cs-fmh0M0mfm2ieXjlQhoF2e6smbVp3BMrXFcSyBQxQ33pp-6tJjghlulb5y-sRjOihpfXlV7uaaWjpYuvi25iUdugxohu1OFRfw5OuUkJ3hghSYRrrxxRWFSSYm57ry4RqBhIY6_d3t9XSVsXzy4-t8_uWJvVa-1ku7VdbWBoWudf4dxqvsfg3edVSx4xeaeptWFVulVqXmrMI7J2isSROsMbj0opZaiv_Q9mvYcSXvz1Zz0v0iiYI2ftw9nMJMt_FU7_aO60lgvuInrcFU_tyaJQwhgUtXrjo0p9k7kq7XJk_bRhgfVmqvbRVfeqZ8J7jZXdVrcn-gwWcWw_pxprSReZrtIn8kyRdBxw852M8eoQ6JmMk8RdOOjvr8zSu3g2r4xddtcFm2pSuUS0tdJbWpIBl4iwp72MX0V0rXaU_sj30RwXQ1iZ94-dqsRUU_zFn-v6Zw08mfndiFqqY6dm2OqJhWb';
+        'ya29.c.c0ASRK0GYi-zT4pLNFT5-A7tSyZzSYdcnQBVmIkQBtwtoX6l8MoGl8v1YWjrAM0X3k-297HyKR4HVxajm934ZKUilWFLRmmH0CgDcv9fKyruIjqxYZwfDNnjOYLBRa4z6InCJ-JJnPClCB_3dyI_-tQh5TGsm9aAnPGEA5mX5v6wWYSWBRfAtYQJHEAPdiWBAEzT5Vu6fRAD7wF65yxcDFGLBva876KA4fsv9MtfBveuzNZPyqCCTqOKGOYeZYawe6dvWm_14TpP-PYwJ__c5W7jzqJV21bgUFxxibd08jizTQPnNot0i7iXh8AAJQizdeMOIJjhucRAlTkXXk5mmnrQqditL7JP-k2kxR-hmPc5g_UOBLqw9WSsMT384Pjrkl-Ro-1OSf4dcMZl8364B1pXk25ubBwlmWVVfM1ejq5uw0pUc6vRIVVibtl4bmtpu8lJUtohxwUJlmy3ppSS5dOcURlM582qku34lqkRx6UcmcrYaQd3964c8OcVOhr7B3ffQ8UvQxQ4Ws4tSV_7p724MO6oYrv9nxlM06uIp-vgVQB6hteb88zvQyyBRx_XZr2rm4qunrb7xz0V0Mecqiv3x4MOVVbauW2pUOUOydj8jimuBow0qyaIQjmXyo22w4UuckXnp80ZRB4YSqQk9q44Wa270WwlFImkkqg0RB-Xqqz-grVWriMd-tbj-Xc3ayofMpI_VsJxcuWiB33scuBUUUiZwZt60-td9nnzS26Wxy1Ricq2SqpZkBFu28Vslx21rntnm6MQRZhtsndOe-tai4S9jr-OarBQkrBq-sh3uQu03V98zU53frqjZrOlY8Scjimqvbwqnp06x-cIwnyRycR400vebk-n4jOrcZ-vIfdUrxZZB0e_j8UZscSFesx0f57F8R67deQbsccx77yy1wiOr7QYQQ87MS7MJ0mzQdvhvanbsfRVQ40shngRRrelgvSRwh36u_vZpfj03iMBZS9yYWtjFomawS7f3wVe5nshSi5q27-BX';
     var messagePayload = {
       'message': {
         'topic': 'all_devices',
@@ -190,6 +191,38 @@ class NotificationService {
       print('Notification sent successfully');
     } else {
       print('Error sending notification: ${response.body}');
+    }
+  }
+
+  void _showDialogWithNotification(RemoteMessage message) {
+    final context = navigatorKey.currentContext;
+
+    if (context != null) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(message.notification?.title ?? 'Notification'),
+            content:
+            Text(message.notification?.body ?? 'You Have a new message'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Close'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  _handleBackgroundMessage(message.data['type'] ?? '');
+                },
+                child: const Text('View'),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
 }
