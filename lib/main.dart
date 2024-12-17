@@ -26,9 +26,17 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Scaffold(
+      home: Scaffold(
         body: Center(
-          child: Text('Center'),
+          child: ElevatedButton(
+            onPressed: () async {
+              await NotificationService.instance.sendNotification(
+                'test title',
+                'test body',
+              );
+            },
+            child: const Text('Send notification'),
+          ),
         ),
       ),
     );
