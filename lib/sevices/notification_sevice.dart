@@ -28,6 +28,9 @@ class NotificationService {
     // Get FCM token
     final token = await _messaging.getToken();
     print('FCM Token: $token');
+
+    // subscribe to all devices/broadcast
+    subscribeToTopic('all_devices');
   }
 
   Future<void> _requestPermission() async {
@@ -130,5 +133,10 @@ class NotificationService {
     if (message.data['type'] == 'chat') {
       // open chat screen
     }
+  }
+
+  Future<void> subscribeToTopic(String topic) async {
+    await FirebaseMessaging.instance.subscribeToTopic(topic);
+    print('Subscribed to $topic');
   }
 }
