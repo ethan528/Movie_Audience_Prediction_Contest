@@ -1,5 +1,9 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+import '../chat_screen.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -78,7 +82,13 @@ class NotificationService {
 
     // flutter notification setup
     await _localNotifications.initialize(initializationSettings,
-        onDidReceiveNotificationResponse: (details) {});
+        onDidReceiveNotificationResponse: (details) {
+      if (details.payload == 'chat') {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => ChatScreen(),
+        ));
+      }
+    });
 
     _isFlutterLocalNotificationsInitialized = true;
   }
