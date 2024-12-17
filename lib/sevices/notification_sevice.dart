@@ -1,5 +1,5 @@
+import 'package:fcm/main.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
@@ -84,8 +84,8 @@ class NotificationService {
     await _localNotifications.initialize(initializationSettings,
         onDidReceiveNotificationResponse: (details) {
       if (details.payload == 'chat') {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => ChatScreen(),
+        navigatorKey.currentState?.push(MaterialPageRoute(
+          builder: (context) => const ChatScreen(),
         ));
       }
     });
@@ -142,6 +142,9 @@ class NotificationService {
   void _handleBackgroundMessage(RemoteMessage message) {
     if (message.data['type'] == 'chat') {
       // open chat screen
+      navigatorKey.currentState?.push(MaterialPageRoute(
+        builder: (context) => const ChatScreen(),
+      ));
     }
   }
 
