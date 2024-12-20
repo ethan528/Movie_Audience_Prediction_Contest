@@ -53,16 +53,16 @@ class DefaultFirebaseOptions {
     apiKey: 'AIzaSyBJ56f8Z7CVBrhoLwXaTJEirH13eoeFXiE',
     appId: '1:33530690725:android:e7cc89517cbe613a49e14c',
     messagingSenderId: '33530690725',
-    projectId: 'fcm-test-9609c',
-    storageBucket: 'fcm-test-9609c.firebasestorage.app',
+    projectId: 'flutter-fcm-test-9609c',
+    storageBucket: 'flutter-fcm-test-9609c.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBOm_tNqe9J24ztF55i21vq8QUnx2S4T-Q',
     appId: '1:33530690725:ios:eedd7b701211511449e14c',
     messagingSenderId: '33530690725',
-    projectId: 'fcm-test-9609c',
-    storageBucket: 'fcm-test-9609c.firebasestorage.app',
-    iosBundleId: 'com.example.fcm',
+    projectId: 'flutter-fcm-test-9609c',
+    storageBucket: 'flutter-fcm-test-9609c.firebasestorage.app',
+    iosBundleId: 'com.example.flutter_fcm',
   );
 }

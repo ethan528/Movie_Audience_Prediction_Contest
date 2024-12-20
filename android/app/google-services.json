@@ -1,15 +1,15 @@
 {
   "project_info": {
     "project_number": "33530690725",
-    "project_id": "fcm-test-9609c",
-    "storage_bucket": "fcm-test-9609c.firebasestorage.app"
+    "project_id": "flutter-fcm-test-9609c",
+    "storage_bucket": "flutter-fcm-test-9609c.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:33530690725:android:e7cc89517cbe613a49e14c",
         "android_client_info": {
-          "package_name": "com.example.fcm"
+          "package_name": "com.example.flutter_fcm"
         }
       },
       "oauth_client": [],

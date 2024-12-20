@@ -1,4 +1,4 @@
-import 'package:fcm/sevices/notification_sevice.dart';
+import 'package:flutter_fcm/sevices/notification_sevice.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
